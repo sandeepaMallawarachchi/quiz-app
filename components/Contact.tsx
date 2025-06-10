@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const Contact = () => {
+
+    const email = "quiztime@gmail.com"
+    const phone = "+1 (123) 456-7890";
+
     return (
         <section
             id="contact"
@@ -29,6 +33,16 @@ const Contact = () => {
                     <h2 className="text-4xl mb-4">Get in touch.</h2>
                     <p className="text-gray-400">
                         Need some help? Let us know what you need and we'll get straight back to you.
+                    </p>
+                    <p className="mt-6">
+                        <a href={`mailto:${email}`} className="text-[#00CAFF] text-sm hover:underline">
+                            Email: {email}
+                        </a>
+                    </p>
+                    <p>
+                        <a href={`tel:${phone}`} className="text-[#00CAFF] text-sm hover:underline">
+                            Phone: {phone}
+                        </a>
                     </p>
                 </div>
             </motion.div>
