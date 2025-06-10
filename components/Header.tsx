@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from '../public/logo.png';
+import AuthModal from "./AuthModal";
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -70,14 +72,15 @@ const Header = () => {
                             />
                         </>
                     ) : (
-                        <Link
-                            href="/login"
+                        <button
+                            onClick={() => setShowModal(true)}
                             className="cursor-pointer bg-white text-black px-8 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors"                        >
                             Login
-                        </Link>
+                        </button>
                     )}
                 </div>
             </div>
+            {showModal && <AuthModal onClose={() => setShowModal(false)} />}
         </header>
     );
 };
