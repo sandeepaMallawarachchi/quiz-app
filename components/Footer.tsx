@@ -77,8 +77,8 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="mt-10 text-center text-gray-500 text-xs">
-                © Quiz Time {new Date().getFullYear()} – All Rights Reserved.
-                Built with ❤️ by{" "}
+                © Quiz Time {new Date().getFullYear()} - All Rights Reserved.
+                Built with <span className="animate-pulse inline-block">❤️</span> by{" "}
                 <a
                     href="https://www.linkedin.com/in/sandeepa-mallawarachchi/"
                     target="_blank"
@@ -88,6 +88,7 @@ const Footer = () => {
                     Sandeepa Mallawarachchi
                 </a>
             </div>
+
         </footer>
     );
 };
