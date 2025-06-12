@@ -75,6 +75,9 @@ const About = () => {
                         Learn More
                     </button>
                 </div>
+                <div className="absolute top-[410px] left-0 w-full h-[50px] z-20 pointer-events-none">
+                    <div className="w-full h-full bg-gray-100 blur-3xl rounded-full opacity-50" />
+                </div>
             </section>
         </div>
     )

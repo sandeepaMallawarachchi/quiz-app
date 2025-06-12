@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { floatingIcons } from "./floatingIconsData";
 
 const Contact = () => {
 
@@ -11,8 +12,27 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="min-h-screen bg-black text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-24 overflow-hidden"
+            className="relative min-h-screen bg-black text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-24 overflow-hidden"
         >
+            {/* Floating Background Icons */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                {floatingIcons.map((item, index) => (
+                    <div
+                        key={index}
+                        className="absolute text-[#00CAFF]/30 text-md animate-float"
+                        style={{
+                            top: item.top,
+                            bottom: item.bottom,
+                            left: item.left,
+                            right: item.right,
+                            animationDelay: item.delay,
+                        }}
+                    >
+                        {item.icon}
+                    </div>
+                ))}
+            </div>
+
             <motion.div
                 className="w-full md:w-1/2 mb-12 md:mb-0 "
                 initial={{ x: -100, opacity: 0 }}

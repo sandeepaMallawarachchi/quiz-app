@@ -1,8 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
 const Hero = () => {
+
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (contentRef.current) observer.observe(contentRef.current);
+    return () => {
+      if (contentRef.current) observer.unobserve(contentRef.current);
+    };
+  }, []);
+
   return (
     <section
       id="hero"
@@ -19,7 +34,11 @@ const Hero = () => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="relative z-20 flex flex-col items-center justify-center h-full space-y-6 animate-slideUpFade">
+      <div
+        ref={contentRef}
+        className={`relative z-20 flex flex-col items-center justify-center h-full space-y-6 ${inView ? "animate-slideUpFade" : "opacity-0"
+          }`}
+      >
         <div className="text-white px-6">
           <h1 className="text-5xl font drop-shadow-lg">Welcome to Quiz Time</h1>
           <p className="mt-4 text-xl text-[#00CAFF] drop-shadow-neon">
