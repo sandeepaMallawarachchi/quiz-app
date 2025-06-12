@@ -34,7 +34,7 @@ const Header = () => {
 
                 <nav className="hidden md:flex gap-12">
                     <a
-                        href="#hero"
+                        href="/#hero"
                         className="text-white text-sm transition duration-200 hover:text-[#00CAFF] hover:[text-shadow:0_0_5px_#00CAFF,0_0_10px_#00CAFF]"
                     >
                         Home
@@ -46,19 +46,19 @@ const Header = () => {
                         Dashboard
                     </Link>
                     <a
-                        href="#quizzes"
+                        href="/#quizzes"
                         className="text-white text-sm transition duration-200 hover:text-[#00CAFF] hover:[text-shadow:0_0_5px_#00CAFF,0_0_10px_#00CAFF]"
                     >
                         Quizzes
                     </a>
                     <a
-                        href="#about"
+                        href="/#about"
                         className="text-white text-sm transition duration-200 hover:text-[#00CAFF] hover:[text-shadow:0_0_5px_#00CAFF,0_0_10px_#00CAFF]"
                     >
                         About
                     </a>
                     <a
-                        href="#contact"
+                        href="/#contact"
                         className="text-white text-sm transition duration-200 hover:text-[#00CAFF] hover:[text-shadow:0_0_5px_#00CAFF,0_0_10px_#00CAFF]"
                     >
                         Contact

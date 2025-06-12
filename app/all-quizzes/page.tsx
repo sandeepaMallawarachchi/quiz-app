@@ -72,17 +72,27 @@ const AllQuizzes = () => {
           <>
             <div className="mb-6">
               <h4 className="text-sm mb-2">Progress</h4>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <div>
                   <span className="text-xs">Science & Nature</span>
                   <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-2 bg-[#00CAFF] w-2/3"></div>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "66%" }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className="h-2 bg-[#00CAFF] rounded-full"
+                    />
                   </div>
                 </div>
                 <div>
                   <span className="text-xs">Geography</span>
                   <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-2 bg-[#00CAFF] w-1/2"></div>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "50%" }}
+                      transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                      className="h-2 bg-[#00CAFF] rounded-full"
+                    />
                   </div>
                 </div>
               </div>
