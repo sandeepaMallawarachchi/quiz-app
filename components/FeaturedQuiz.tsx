@@ -19,7 +19,7 @@ const dummyQuizzes = [
         description: 'Explore the wonders of biology, physics, and more.',
         tag: 'New',
         color: '#7C3AED',
-        image: 'https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrV5rgO6meF6AoHwYRNz_nmWtD4_-1FMIr2w&s'
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ const dummyQuizzes = [
         description: 'Test how much you know about world events.',
         tag: 'Hot',
         color: '#EF4444',
-        image: 'https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg'
+        image: 'https://miro.medium.com/v2/resize:fit:1400/1*9LpURd6x_QgHlsQM29Myew.png'
     },
     {
         id: 4,
@@ -35,7 +35,7 @@ const dummyQuizzes = [
         description: 'Test your knowledge of movies, music, and celebrities.',
         tag: 'Popular',
         color: '#F59E0B',
-        image: 'https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg'
+        image: 'https://codewithmosh.com/_next/image?url=https%3A%2F%2Fcdn.filestackcontent.com%2F8MbtJ4hTAaOk3KPcptqZ&w=3840&q=75'
     },
     {
         id: 5,
@@ -43,7 +43,7 @@ const dummyQuizzes = [
         description: 'Explore countries, capitals, and landmarks.',
         tag: 'Featured',
         color: '#10B981',
-        image: 'https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg'
+        image: 'https://admin.wac.co/uploads/Node_js_Architecture_A_Comprehensive_Guide_1_af37a73e1e.png'
     },
 ]
 const FeaturedQuiz = () => {

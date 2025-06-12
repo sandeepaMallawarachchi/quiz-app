@@ -3,13 +3,39 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaUserCircle } from "react-icons/fa";
+import { image } from "framer-motion/client";
 
 const dummyQuizzes = [
-  { id: 1, title: "General Knowledge", status: "completed" },
-  { id: 2, title: "Science & Nature", status: "onprogress" },
-  { id: 3, title: "History Quiz", status: "completed" },
-  { id: 4, title: "Geography", status: "onprogress" },
-  { id: 5, title: "Pop Culture", status: "completed" },
+  {
+    id: 1,
+    title: "General Knowledge",
+    image: "https://codewithmosh.com/_next/image?url=https%3A%2F%2Fcdn.filestackcontent.com%2F8MbtJ4hTAaOk3KPcptqZ&w=3840&q=75",
+    status: "completed"
+  },
+  {
+    id: 2,
+    title: "Science & Nature",
+    image: "https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg",
+    status: "onprogress"
+  },
+  {
+    id: 3,
+    title: "History Quiz",
+    image: "https://miro.medium.com/v2/resize:fit:1400/1*9LpURd6x_QgHlsQM29Myew.png",
+    status: "completed"
+  },
+  {
+    id: 4,
+    title: "Geography",
+    image: "https://admin.wac.co/uploads/Node_js_Architecture_A_Comprehensive_Guide_1_af37a73e1e.png",
+    status: "onprogress"
+  },
+  {
+    id: 5,
+    title: "Pop Culture",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrV5rgO6meF6AoHwYRNz_nmWtD4_-1FMIr2w&s",
+    status: "completed"
+  },
 ];
 
 const dummyLeaderboard = [
@@ -112,9 +138,14 @@ const AllQuizzes = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="bg-[#111] p-6 rounded-2xl border border-white/10 shadow-md hover:scale-105 transition-transform"
+              className="bg-[#111] p-6 cursor-pointer rounded-2xl border border-white/10 shadow-md hover:scale-105 transition-transform"
             >
               <h3 className="text-lg font-semibold mb-2">{quiz.title}</h3>
+              <img
+                src={quiz.image}
+                alt={quiz.title}
+                className="w-full h-40 object-cover rounded-lg mb-2"
+              />
               <p className="text-xs text-gray-400 mb-1 capitalize">Status: {quiz.status}</p>
               <button className="mt-2 text-sm text-[#00CAFF] hover:underline">
                 View Quiz
@@ -128,11 +159,10 @@ const AllQuizzes = () => {
             <button
               key={i}
               onClick={() => setCurrentPage(i + 1)}
-              className={`px-3 py-1 rounded-full text-sm ${
-                currentPage === i + 1
-                  ? "bg-[#00CAFF] text-black"
-                  : "bg-white/10 text-white"
-              }`}
+              className={`px-3 py-1 rounded-full text-sm ${currentPage === i + 1
+                ? "bg-[#00CAFF] text-black"
+                : "bg-white/10 text-white"
+                }`}
             >
               {i + 1}
             </button>
