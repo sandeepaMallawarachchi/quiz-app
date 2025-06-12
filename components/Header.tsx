@@ -46,6 +46,12 @@ const Header = () => {
                         Dashboard
                     </Link>
                     <a
+                        href="#quizzes"
+                        className="text-white text-sm transition duration-200 hover:text-[#00CAFF] hover:[text-shadow:0_0_5px_#00CAFF,0_0_10px_#00CAFF]"
+                    >
+                        Quizzes
+                    </a>
+                    <a
                         href="#about"
                         className="text-white text-sm transition duration-200 hover:text-[#00CAFF] hover:[text-shadow:0_0_5px_#00CAFF,0_0_10px_#00CAFF]"
                     >

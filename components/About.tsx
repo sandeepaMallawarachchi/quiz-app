@@ -34,8 +34,8 @@ const About = () => {
     }, []);
 
     return (
-        <div className="h-[60vh] overflow-hidden">
-            <section id='about' className="relative min-h-screen bg-black text-white flex flex-col items-center justify-start pt-48 overflow-hidden">
+        <div id='about' className="h-[60vh] overflow-hidden">
+            <section className="relative min-h-screen bg-black text-white flex flex-col items-center justify-start pt-48 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center mt-[500px]">
                     <div className="w-[1080px] h-[1080px] relative">
                         <div className="absolute inset-0 [animation:spin_50s_linear_infinite]">
