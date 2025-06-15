@@ -24,7 +24,7 @@ const QuizModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -33,7 +33,7 @@ const QuizModal: React.FC = () => {
       >
         <button
           onClick={() => dispatch(closeQuizModal())}
-          className="absolute top-3 right-3 text-white hover:text-red-400"
+          className="absolute cursor-pointer top-3 right-3 text-white hover:text-red-400"
         >
           <FaTimes />
         </button>
@@ -41,10 +41,12 @@ const QuizModal: React.FC = () => {
         <img src={selectedQuiz.image} alt={selectedQuiz.title} className="w-full h-48 rounded-lg object-cover mb-4" />
         <h2 className="text-2xl font-bold mb-2">{selectedQuiz.title}</h2>
         <p className="text-sm text-gray-300 mb-4">{selectedQuiz.description || "No description provided."}</p>
-        <div className="flex items-center gap-2 mb-4">
-          {selectedQuiz.ratings && renderStars(selectedQuiz.ratings)}
+        <div className="flex justify-between">
+          <p className="text-xs mb-4 text-gray-400 capitalize">Status: {selectedQuiz.status}</p>
+          <div className="flex items-center gap-2 mb-4">
+            {selectedQuiz.ratings && renderStars(selectedQuiz.ratings)}
+          </div>
         </div>
-        <p className="text-xs mb-4 text-gray-400 capitalize">Status: {selectedQuiz.status}</p>
 
         <button className="px-5 py-2 rounded-full bg-[#00CAFF] text-black hover:bg-[#00b6e5] transition">
           Start Quiz
