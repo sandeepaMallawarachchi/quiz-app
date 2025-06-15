@@ -1,4 +1,4 @@
-export type QuizCard = {
+export type QuizType = {
   id: number;
   title: string;
   description: string;

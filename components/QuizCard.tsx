@@ -3,7 +3,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { openQuizModal } from "@/store/quizSlice";
-import { QuizCard as QuizCardType } from "@/types/quizTypes";
+import { QuizType as QuizCardType } from "@/types/quizTypes";
 import { motion } from "framer-motion";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
@@ -34,10 +34,13 @@ const QuizCard: React.FC<Props> = ({ quiz }) => {
     >
       <img src={quiz.image} alt={quiz.title} className="w-full h-40 rounded-lg object-cover mb-3" />
       <h3 className="text-lg font-bold mb-1">{quiz.title}</h3>
-      {quiz.ratings && (
-        <div className="flex items-center gap-1 mb-2">{renderStars(quiz.ratings)}</div>
-      )}
-      <p className="text-xs text-gray-400 capitalize">Status: {quiz.status}</p>
+      <div className="flex justify-between items-center">
+        <p className="text-xs text-gray-400 capitalize">Status: {quiz.status}</p>
+
+        {quiz.ratings && (
+          <div className="flex items-center gap-1 mb-2">{renderStars(quiz.ratings)}</div>
+        )}
+      </div>
     </motion.div>
   );
 };

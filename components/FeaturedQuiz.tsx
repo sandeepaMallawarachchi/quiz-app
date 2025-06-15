@@ -1,8 +1,11 @@
 "use client";
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { QuizCard } from '../types/quizTypes'
+import { QuizType } from '../types/quizTypes'
 import Link from "next/link";
+import QuizModal from "@/components/QuizModal";
+import { useAppDispatch } from "@/store/hooks";
+import { openQuizModal } from "@/store/quizSlice";
 
 const dummyQuizzes = [
     {
@@ -51,7 +54,7 @@ const FeaturedQuiz = () => {
     const [visibleCards, setVisibleCards] = useState([
         ...dummyQuizzes.slice(0, 3),
     ])
-    const [exitingCard, setExitingCard] = useState<QuizCard | null>(null)
+    const [exitingCard, setExitingCard] = useState<QuizType | null>(null)
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -70,6 +73,8 @@ const FeaturedQuiz = () => {
         }, 2000)
         return () => clearInterval(interval)
     }, [visibleCards])
+
+    const dispatch = useAppDispatch();
 
     return (
         <motion.section
@@ -114,7 +119,10 @@ const FeaturedQuiz = () => {
                             }
                             className="absolute top-0 left-0 w-[300px]"
                         >
-                            <div className="relative cursor-pointer bg-[#111] rounded-3xl p-6 border border-white/10 backdrop-blur-md shadow-[0_15px_35px_rgba(0,202,255,0.15)] transition-transform duration-300 hover:scale-105">
+                            <div
+                                onClick={() => dispatch(openQuizModal(quiz))}
+                                className="relative cursor-pointer bg-[#111] rounded-3xl p-6 border border-white/10 backdrop-blur-md shadow-[0_15px_35px_rgba(0,202,255,0.15)] transition-transform duration-300 hover:scale-105"
+                            >
                                 <div className="absolute -top-2 -right-2 w-16 h-16 bg-[#00caff33] blur-2xl rounded-full z-0" />
                                 <div className="mb-4 relative z-10">
                                     <span
@@ -145,6 +153,10 @@ const FeaturedQuiz = () => {
                     ))}
                 </AnimatePresence>
             </div>
+
+            {/* Quiz Modal */}
+            <QuizModal />
+
             <div className="flex justify-center mt-20">
                 <Link
                     href="/all-quizzes"
