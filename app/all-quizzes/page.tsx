@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaUserCircle, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import { image } from "framer-motion/client";
+import { desc, image } from "framer-motion/client";
+import QuizModal from "@/components/QuizModal";
+import QuizCard from "@/components/QuizCard";
 
 const dummyQuizzes = [
   {
@@ -11,35 +13,40 @@ const dummyQuizzes = [
     title: "General Knowledge",
     image: "https://codewithmosh.com/_next/image?url=https%3A%2F%2Fcdn.filestackcontent.com%2F8MbtJ4hTAaOk3KPcptqZ&w=3840&q=75",
     ratings: 4.5,
-    status: "completed"
+    status: "completed",
+    description: "Test your general knowledge with a variety of questions across different topics.",
   },
   {
     id: 2,
     title: "Science & Nature",
     image: "https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg",
     ratings: 4.7,
-    status: "onprogress"
+    status: "onprogress",
+    description: "Explore the wonders of science and nature with this engaging quiz."
   },
   {
     id: 3,
     title: "History Quiz",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*9LpURd6x_QgHlsQM29Myew.png",
     ratings: 4.0,
-    status: "completed"
+    status: "completed",
+    description: "Test your knowledge of historical events, figures, and milestones."
   },
   {
     id: 4,
     title: "Geography",
     image: "https://admin.wac.co/uploads/Node_js_Architecture_A_Comprehensive_Guide_1_af37a73e1e.png",
     ratings: 4.2,
-    status: "onprogress"
+    status: "onprogress",
+    description: "Challenge yourself with questions about countries, capitals, and landmarks."
   },
   {
     id: 5,
     title: "Pop Culture",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrV5rgO6meF6AoHwYRNz_nmWtD4_-1FMIr2w&s",
     ratings: 4.1,
-    status: "completed"
+    status: "completed",
+    description: "Test your knowledge of movies, music, and celebrities in this fun quiz."
   },
 ];
 
@@ -143,47 +150,14 @@ const AllQuizzes = () => {
           </select>
         </div>
 
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentQuizzes.map((quiz) => (
-            <motion.div
-              key={quiz.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="bg-[#111] p-6 cursor-pointer rounded-2xl border border-white/10 shadow-md hover:scale-105 transition-transform"
-            >
-              <h3 className="text-lg font-semibold mb-2">{quiz.title}</h3>
-              <img
-                src={quiz.image}
-                alt={quiz.title}
-                className="w-full h-40 object-cover rounded-lg mb-2"
-              />
-              <div className="flex justify-between">
-                <p className="text-xs text-gray-400 mb-1 capitalize">Status: {quiz.status}</p>
-                {quiz.ratings && (
-                  <div className="flex items-center gap-1 text-[#FFD700] text-sm">
-                    {Array.from({ length: 5 }, (_, i) => {
-                      const ratingValue = i + 1;
-                      if (quiz.ratings >= ratingValue) {
-                        return <FaStar key={i} />;
-                      } else if (quiz.ratings >= ratingValue - 0.5) {
-                        return <FaStarHalfAlt key={i} />;
-                      } else {
-                        return <FaRegStar key={i} />;
-                      }
-                    })}
-                  </div>
-                )}
-              </div>
-              <button className="mt-2 text-sm text-[#00CAFF] hover:underline">
-                View Quiz
-              </button>
-            </motion.div>
+            <QuizCard key={quiz.id} quiz={quiz} />
           ))}
         </motion.div>
+
+        {/* Quiz Modal */}
+        <QuizModal />
 
         <div className="mt-6 flex justify-center gap-2">
           {Array.from({ length: totalPages }, (_, i) => (
