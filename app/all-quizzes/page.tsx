@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { image } from "framer-motion/client";
 
 const dummyQuizzes = [
@@ -10,30 +10,35 @@ const dummyQuizzes = [
     id: 1,
     title: "General Knowledge",
     image: "https://codewithmosh.com/_next/image?url=https%3A%2F%2Fcdn.filestackcontent.com%2F8MbtJ4hTAaOk3KPcptqZ&w=3840&q=75",
+    ratings: 4.5,
     status: "completed"
   },
   {
     id: 2,
     title: "Science & Nature",
     image: "https://apacinsider.digital/wp-content/uploads/2023/01/image1-2.jpg",
+    ratings: 4.7,
     status: "onprogress"
   },
   {
     id: 3,
     title: "History Quiz",
     image: "https://miro.medium.com/v2/resize:fit:1400/1*9LpURd6x_QgHlsQM29Myew.png",
+    ratings: 4.0,
     status: "completed"
   },
   {
     id: 4,
     title: "Geography",
     image: "https://admin.wac.co/uploads/Node_js_Architecture_A_Comprehensive_Guide_1_af37a73e1e.png",
+    ratings: 4.2,
     status: "onprogress"
   },
   {
     id: 5,
     title: "Pop Culture",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrV5rgO6meF6AoHwYRNz_nmWtD4_-1FMIr2w&s",
+    ratings: 4.1,
     status: "completed"
   },
 ];
@@ -156,7 +161,23 @@ const AllQuizzes = () => {
                 alt={quiz.title}
                 className="w-full h-40 object-cover rounded-lg mb-2"
               />
-              <p className="text-xs text-gray-400 mb-1 capitalize">Status: {quiz.status}</p>
+              <div className="flex justify-between">
+                <p className="text-xs text-gray-400 mb-1 capitalize">Status: {quiz.status}</p>
+                {quiz.ratings && (
+                  <div className="flex items-center gap-1 text-[#FFD700] text-sm">
+                    {Array.from({ length: 5 }, (_, i) => {
+                      const ratingValue = i + 1;
+                      if (quiz.ratings >= ratingValue) {
+                        return <FaStar key={i} />;
+                      } else if (quiz.ratings >= ratingValue - 0.5) {
+                        return <FaStarHalfAlt key={i} />;
+                      } else {
+                        return <FaRegStar key={i} />;
+                      }
+                    })}
+                  </div>
+                )}
+              </div>
               <button className="mt-2 text-sm text-[#00CAFF] hover:underline">
                 View Quiz
               </button>
